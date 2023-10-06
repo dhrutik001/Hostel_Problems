@@ -1,3 +1,4 @@
+require('dotenv').config();
 //This returns a function
 const express=require('express');
 const mongoose = require('mongoose');
@@ -26,7 +27,7 @@ app.use('/complains',complains);
 app.use('/loged',loged);
 //mongoose.connect returns a promise
 
-const connection_url =  'mongodb://localhost/HostelManagement';
+const connection_url =  process.env.DB_URL;
 
 mongoose.connect(connection_url, {useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
